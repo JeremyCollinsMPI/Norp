@@ -17,8 +17,10 @@ body
     display: inline-block;
 }
 #image-list li img{
-    width: 500px;
-    height: 500px;
+    max-width: 500px;
+    max-height: 500px;
+    width: auto;
+    height: auto;
 }
 
 #image-container{
