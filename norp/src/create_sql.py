@@ -22,6 +22,7 @@ CREATE TABLE `tbl_images` (
 mycursor.execute(string)
 string = "INSERT INTO tbl_images (id, image_name, image_path, image_order, date) VALUES "
 images = os.listdir('images')
+images = [x for x in images if not x == '.DS_Store']
 print(images)
 orders = range(1, len(images)+1)
 for i in range(0, len(images)):

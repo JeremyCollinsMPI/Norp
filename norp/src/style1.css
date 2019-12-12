@@ -17,8 +17,8 @@ body
     display: inline-block;
 }
 #image-list li img{
-    width: 250px;
-    height: 155px;
+    width: 500px;
+    height: 500px;
 }
 
 #image-container{
@@ -49,3 +49,4 @@ body
     cursor:pointer;
     position: absolute;
 }
+
