@@ -18,7 +18,7 @@ $conn->close();
         <link rel="stylesheet" href="vendor/jquery/jquery-ui/jquery-ui.css">
         <script src="vendor/jquery/jquery-ui/jquery-ui.js" type="text/javascript"></script>
         
-        <link rel="stylesheet" type="text/css" href="style1.css" >
+        <link rel="stylesheet" type="text/css" href="style2.css" >
        
         <title>Change Order of Images in Photo Gallery with Drag and Drop using PHP AJAX</title>
         <script>
