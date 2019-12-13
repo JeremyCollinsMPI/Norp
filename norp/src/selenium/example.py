@@ -2,9 +2,7 @@ from selenium import webdriver
 from time import sleep
 import os
 
-browser = webdriver.Chrome()
-browser.get('chrome://settings/')
-browser.execute_script('chrome.settingsPrivate.setDefaultZoom(1);')
+
 
 
 embeddings = open('embeddings.txt','r').readlines()
@@ -23,6 +21,10 @@ def get_url_and_username(embedding):
 for embedding in embeddings:
   print get_url_and_username(embedding)
 
+
+browser = webdriver.Chrome()
+browser.get('chrome://settings/')
+browser.execute_script('chrome.settingsPrivate.setDefaultZoom(1);')
 
 def take_screenshot(url, filename, close_login=False):
   browser.get(url)
