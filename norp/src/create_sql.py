@@ -44,3 +44,7 @@ mycursor.execute(string)
 string = "COMMIT;"
 mycursor.execute(string)
 
+string = "SELECT * FROM tbl_images;"
+x  = mycursor.execute(string)
+print(x)
+
