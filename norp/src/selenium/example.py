@@ -10,9 +10,14 @@ embeddings = [x.strip('\n') for x in embeddings]
 embeddings = [x for x in embeddings if not x == '']
 
 def get_url_and_username(embedding):
-  string = embedding.split(">A post shared by")[1]
+  string = embedding.split(">A post shared by ")[1]
   string = string.split('instagram.com/')[1]
   string = string.split('/')[0]
+  if 'embed.js' in string:
+    string = embedding.split(">A post shared by")[1]
+    string = string.split('@')[1]
+    string = string.split(')')[0]
+    string = string.split('<')[0]
   username = string
   url = embedding.split('data-instgrm-permalink="')[1].split('/?utm_source')[0]
   return url, username
