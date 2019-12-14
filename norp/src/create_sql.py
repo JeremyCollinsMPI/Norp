@@ -27,7 +27,7 @@ print(images)
 orders = range(1, len(images)+1)
 for i in range(0, len(images)):
   image = images[i]
-  to_add = '(' + str(i+1) + ", '" + image.strip('.jpeg') + "', '" + 'images/' + image + "', " + str(orders[i]) + ", '2018-09-16 10:46:21')" 
+  to_add = '(' + str(i+1) + ", '" + image + "', '" + 'images/' + image + "', " + str(orders[i]) + ", '2018-09-16 10:46:21')" 
   if i < len(images) - 1:
     to_add = to_add + ','
   else:
