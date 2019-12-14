@@ -1,9 +1,4 @@
 <?php
-// if (!extension_loaded('mysqli')) {
-//     echo 'We don\'t have mysqli!!!';
-// } else {
-//     echo 'Phew we have it!';
-// }
 require_once "db.php";
 $sql = "SELECT * FROM tbl_images ORDER BY image_order ASC";
 $result = $conn->query($sql);
@@ -59,7 +54,7 @@ $conn->close();
         <div id="gallery">
         
         <div id="image-container">
-        <h2>Change Order of Images in Photo Gallery with Drag and Drop using PHP AJAX</h2>
+        <h2>Change Order of Images with Drag and Drop</h2>
         <div id="txtresponse" > </div>
             <ul id="image-list" >
                 <?php
