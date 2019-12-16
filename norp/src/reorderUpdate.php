@@ -6,7 +6,7 @@ $imageIdsArray = $_POST['imageIds'];
 $count = 1;
 foreach ($imageIdsArray as $id) {
 
-    $sql = $conn->prepare("UPDATE tbl_images SET image_order=? WHERE id=?");
+    $sql = $conn->prepare("UPDATE tbl_images SET current_sample=? WHERE id=?");
     $imageOrder = $count;
     $imageId = $id;
     $sql->bind_param("ii", $imageOrder, $imageId);

@@ -16,7 +16,8 @@ CREATE TABLE `tbl_images` (
   `image_name` varchar(200) NOT NULL,
   `image_path` varchar(50) NOT NULL,
   `image_order` int(7) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `current_sample` int(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 '''
 mycursor.execute(string)

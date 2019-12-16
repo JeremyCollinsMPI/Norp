@@ -1,6 +1,9 @@
 <?php
 require_once "db.php";
-$sql = "SELECT * FROM tbl_images ORDER BY image_order ASC";
+$curl = curl_init("172.17.0.6:89/random"); 
+$html = curl_exec($curl);
+curl_close($curl);
+$sql = "SELECT * FROM tbl_images where current_sample is not null;";
 $result = $conn->query($sql);
 $conn->close();
 ?>
