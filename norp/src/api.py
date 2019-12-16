@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_restful import Resource, Api
+from flask import request
 import os
 import random
 import mysql.connector
@@ -33,21 +34,29 @@ class RandomSample():
 class Record():
   @app.route("/record", methods=['GET'])
   def moose2():
-    try:
-      mycursor.execute('select sample1 from tbl_images;')
-      mycursor.execute('update tbl_images set sample1=current_sample;')
-      mycursor.execute('COMMIT;')
-      return ''
-    except:
-      mycursor.execute('alter table tbl_images add column sample1 int;')
-      mycursor.execute('update tbl_images set sample1=current_sample;')
-      mycursor.execute('COMMIT;')
-      return ''
+    done = False
+    i = 1
+    while done == False:
+      try:
+        mycursor.execute('select sample' + str(i) + ' from tbl_images;')
+        i = i + 1
+      except:
+        mycursor.execute('alter table tbl_images add column sample' + str(i) + ' int;')
+        mycursor.execute('update tbl_images set sample' + str(i) + '=current_sample;')
+        mycursor.execute('COMMIT;')
+        done = True
+        return 'moo'
 
 class Query():
   @app.route("/query", methods=['GET'])
   def moose3():
-    mycursor.execute('select sample1 from tbl_images where sample1 is not null;')
+    sample = request.args.get('sample')
+    try:
+#       mycursor.execute('select sample' + sample + ' from tbl_images where sample' + sample + ' is not null;')
+      mycursor.execute('select sample' + sample + ' from tbl_images;')
+
+    except:
+      return 'No column ' + sample + '.'
     return str(list(mycursor))
 
 

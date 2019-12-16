@@ -45,7 +45,7 @@ $conn->close();
                         success: function (response) {
 //                            $("#txtresponse").css('display', 'inline-block'); 
 //                            $("#txtresponse").text(response);
-                           $(document).reload()
+                           location.reload()
                         }
                     });
                     e.preventDefault();
