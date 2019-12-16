@@ -18,7 +18,7 @@ foreach ($imageIdsArray as $id) {
     $count ++;
 }
 
-$curl = curl_init("172.17.0.6:89/record"); 
+$curl = curl_init("PYTHON_URL/record"); 
 $html = curl_exec($curl);
 curl_close($curl);
 

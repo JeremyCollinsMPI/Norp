@@ -43,8 +43,9 @@ $conn->close();
                         type: 'post',
                         data: {imageIds: imageIdsArray},
                         success: function (response) {
-                           $("#txtresponse").css('display', 'inline-block'); 
-                           $("#txtresponse").text(response);
+//                            $("#txtresponse").css('display', 'inline-block'); 
+//                            $("#txtresponse").text(response);
+                           $(document).reload()
                         }
                     });
                     e.preventDefault();

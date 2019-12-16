@@ -28,7 +28,7 @@ class RandomSample():
     for i in range(sample_size):
       mycursor.execute("update tbl_images set current_sample=" + str(i) + " where id=" + str(sample[i]) + ';')
     mycursor.execute('COMMIT;')
-    return 'success'
+    return ''
 
 class Record():
   @app.route("/record", methods=['GET'])
@@ -37,12 +37,12 @@ class Record():
       mycursor.execute('select sample1 from tbl_images;')
       mycursor.execute('update tbl_images set sample1=current_sample;')
       mycursor.execute('COMMIT;')
-      return 'success'
+      return ''
     except:
       mycursor.execute('alter table tbl_images add column sample1 int;')
       mycursor.execute('update tbl_images set sample1=current_sample;')
       mycursor.execute('COMMIT;')
-      return 'success'
+      return ''
 
 class Query():
   @app.route("/query", methods=['GET'])
