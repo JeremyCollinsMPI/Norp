@@ -59,6 +59,14 @@ $conn->close();
         
         <div id="image-container">
         <h2>Sorted images</h2>
+      <button onclick="myFunc()">Home</button> 
+      <!~~script to redirect to another webpage~~>   
+      <script> 
+         function myFunc() { 
+          location.replace("index.php"); 
+         } 
+      </script> 
+
         <div id="txtresponse" > </div>
             <ul id="image-list" >
                 <?php

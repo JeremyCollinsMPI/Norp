@@ -99,7 +99,7 @@ class Elo():
         i = i + 1
       except:
         done = True
-    all_pairs = random.sample(all_pairs, len(all_pairs))
+#     all_pairs = random.sample(all_pairs, len(all_pairs))
     i = Implementation()    
     for j in range(1,201):
       i.addPlayer(str(j), rating = 1000)
