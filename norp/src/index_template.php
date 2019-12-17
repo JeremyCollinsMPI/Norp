@@ -3,7 +3,7 @@ require_once "db.php";
 $curl = curl_init("PYTHON_URL:89/random"); 
 $html = curl_exec($curl);
 curl_close($curl);
-$sql = "SELECT * FROM tbl_images where current_sample is not null;";
+$sql = "SELECT * FROM tbl_images where current_sample is not null order by current_sample asc;";
 $result = $conn->query($sql);
 $conn->close();
 ?>
@@ -16,7 +16,7 @@ $conn->close();
         <link rel="stylesheet" href="vendor/jquery/jquery-ui/jquery-ui.css">
         <script src="vendor/jquery/jquery-ui/jquery-ui.js" type="text/javascript"></script>
         
-        <link rel="stylesheet" type="text/css" href="style2.css" >
+        <link rel="stylesheet" type="text/css" href="style4.css" >
        
         <title>Change Order of Images in Photo Gallery with Drag and Drop using PHP AJAX</title>
         <script>
@@ -50,6 +50,11 @@ $conn->close();
                     });
                     e.preventDefault();
                 });
+            
+              $('#show-sorted').click(function (e) {
+                
+              
+              }
             });
 
         </script>
@@ -80,6 +85,19 @@ $conn->close();
         <div id="submit-container"> 
             <input type='button' class="btn-submit" value='Submit' id='submit' />
         </div>
+        <div id="show-sorted"> 
+            <input type='button' class="btn-show-sorted" value='Show Sorted' id='show-sorted' />
         </div>
+        </div>
+
+      <h2></h2> 
+      <p>Click below to show the sorted images </p> 
+      <button onclick="myFunc()">Click me</button> 
+      <!--script to redirect to another webpage-->   
+      <script> 
+         function myFunc() { 
+          location.replace("elo.php"); 
+         } 
+      </script> 
     </body>
 </html>

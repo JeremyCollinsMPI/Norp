@@ -4,7 +4,7 @@ body
    text:#212121;
 }
 #gallery{
-    width:1057px;
+    width:1357px;
     margin: 0 auto;
 }
 #image-list { 
@@ -17,8 +17,8 @@ body
     display: inline-block;
 }
 #image-list li img{
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 300px;
+    max-height: 300px;
     width: auto;
     height: auto;
 }
