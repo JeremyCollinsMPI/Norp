@@ -16,7 +16,7 @@ $conn->close();
         <link rel="stylesheet" href="vendor/jquery/jquery-ui/jquery-ui.css">
         <script src="vendor/jquery/jquery-ui/jquery-ui.js" type="text/javascript"></script>
         
-        <link rel="stylesheet" type="text/css" href="style2.css" >
+        <link rel="stylesheet" type="text/css" href="style4.css" >
        
         <title>Change Order of Images in Photo Gallery with Drag and Drop using PHP AJAX</title>
         <script>
@@ -45,7 +45,7 @@ $conn->close();
                         success: function (response) {
 //                            $("#txtresponse").css('display', 'inline-block'); 
 //                            $("#txtresponse").text(response);
-                           $(document).reload()
+                           location.reload()
                         }
                     });
                     e.preventDefault();
@@ -81,5 +81,16 @@ $conn->close();
             <input type='button' class="btn-submit" value='Submit' id='submit' />
         </div>
         </div>
+      <h2>              </h2> 
+      <p>    g </p>
+      <p>Click below to show the sorted images </p> 
+      <button onclick="myFunc()">Click me</button> 
+      <!~~script to redirect to another webpage~~>   
+      <script> 
+         function myFunc() { 
+          location.replace("elo.php"); 
+         } 
+      </script> 
+
     </body>
 </html>

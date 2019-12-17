@@ -3,7 +3,7 @@ require_once "db.php";
 $curl = curl_init("PYTHON_URL:89/random"); 
 $html = curl_exec($curl);
 curl_close($curl);
-$sql = "SELECT * FROM tbl_images where current_sample is not null order by current_sample asc;";
+$sql = "SELECT * FROM tbl_images where current_sample is not null;";
 $result = $conn->query($sql);
 $conn->close();
 ?>
@@ -50,11 +50,6 @@ $conn->close();
                     });
                     e.preventDefault();
                 });
-            
-              $('#show-sorted').click(function (e) {
-                
-              
-              }
             });
 
         </script>
@@ -85,19 +80,17 @@ $conn->close();
         <div id="submit-container"> 
             <input type='button' class="btn-submit" value='Submit' id='submit' />
         </div>
-        <div id="show-sorted"> 
-            <input type='button' class="btn-show-sorted" value='Show Sorted' id='show-sorted' />
         </div>
-        </div>
-
-      <h2></h2> 
+      <h2>              </h2> 
+      <p>    g </p>
       <p>Click below to show the sorted images </p> 
       <button onclick="myFunc()">Click me</button> 
-      <!--script to redirect to another webpage-->   
+      <!~~script to redirect to another webpage~~>   
       <script> 
          function myFunc() { 
           location.replace("elo.php"); 
          } 
       </script> 
+
     </body>
 </html>
