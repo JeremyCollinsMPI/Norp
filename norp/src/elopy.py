@@ -79,7 +79,7 @@ class Implementation:
         expected2 = player2.compareRating(player1)
         
 #         k = len(self.__getPlayerList()) * 42
-        k = 1000
+        k = 10
 
         rating1 = player1.rating
         rating2 = player2.rating

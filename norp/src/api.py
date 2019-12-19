@@ -86,6 +86,13 @@ class Query():
 class Elo():
   @app.route("/elo", methods=['GET'])
   def moose4():
+    try:
+      silent = request.args.get('silent')
+      if silent == 'true':
+        silent = True
+        print(silent)
+    except:
+      silent = False
     done = False
     all_pairs = []
     i = 1
@@ -99,13 +106,14 @@ class Elo():
         i = i + 1
       except:
         done = True
-#     all_pairs = random.sample(all_pairs, len(all_pairs))
-    i = Implementation()    
+    number_of_iterations = 100
+    i = Implementation()
     for j in range(1,201):
       i.addPlayer(str(j), rating = 1000)
-    for pair in all_pairs:
-      i.recordMatch(str(pair[0]), str(pair[1]), winner=str(pair[0]))
-      print(i.getRatingList())
+    for iteration in range(number_of_iterations):
+      all_pairs = random.sample(all_pairs, len(all_pairs))   
+      for pair in all_pairs:
+        i.recordMatch(str(pair[0]), str(pair[1]), winner=str(pair[0]))
     try:
       mycursor.execute('select elo from tbl_images;')
     except:
@@ -114,7 +122,11 @@ class Elo():
       id = member[0]
       ranking = str(round(member[1], 2))
       mycursor.execute('update tbl_images set elo=' + ranking + ' where id=' + id + ';')
-    return str(i.getRatingList())
+    ratings = i.getRatingList()
+    if not silent:
+      return str(sorted(ratings, key = lambda x:x[1], reverse = True))
+    else:
+      return ''
     
 
 if __name__ == '__main__':

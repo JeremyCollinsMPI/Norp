@@ -21,9 +21,9 @@ foreach ($imageIdsArray as $id) {
 $curl = curl_init("PYTHON_URL:89/record"); 
 $html = curl_exec($curl);
 curl_close($curl);
-$curl = curl_init("PYTHON_URL:89/elo"); 
-$html = curl_exec($curl);
-curl_close($curl);
+// $curl = curl_init("PYTHON_URL:89/elo"); 
+// $html = curl_exec($curl);
+// curl_close($curl);
 echo $response;
 exit;
 ?>
