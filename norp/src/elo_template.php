@@ -79,7 +79,7 @@ $conn->close();
                         $imageId = $row['id'];
                         $imageName = $row['image_name'];
                         $imagePath = $row['image_path'];
-                        $elo = $row['elo'];
+                        $elo = intval($row['elo']);
 
                         echo '<li id="image_' . $imageId . '" >
                         <img src="' . $imagePath . '" alt="' . $imageName . '">' . 
