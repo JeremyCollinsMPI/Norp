@@ -7,7 +7,7 @@ $imageName = $_GET["imageName"];
 $imageNameArray = explode('_', $imageName);
 
 $person = join('_', array_slice($imageNameArray, 0, count($imageNameArray)-1));
-$sql = "SELECT * FROM all_images where person='" . $person . "';";
+$sql = "SELECT * FROM all_images where person='" . $person . "' order by image_order asc;";
 $result = $conn->query($sql);
 $conn->close();
 
@@ -26,6 +26,18 @@ $conn->close();
        
         <title>Change Order of Images in Photo Gallery with Drag and Drop using PHP AJAX</title>
         <script>
+            function getQueryVariable(variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i=0;i<vars.length;i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == variable) {
+                        return pair[1];
+                    }
+                    } 
+                 alert('Query Variable ' + variable + ' not found');
+            }
+            var imageName = getQueryVariable('imageName');
             $(document).ready(function () {
                 var dropIndex;
                 $("#image-list").sortable({
@@ -41,20 +53,22 @@ $conn->close();
                             var id = $(this).attr('id');
                             var split_id = id.split("_");
                             imageIdsArray.push(split_id[1]);
+//                             window.alert(split_id[1]);
                         }
                     });
-
                     $.ajax({
-                        url: 'reorderUpdate.php',
+                        url: 'reorder_update_particular_person.php',
                         type: 'post',
-                        data: {imageIds: imageIdsArray},
+                        data: {imageIds: imageIdsArray , imageName: imageName},
                         success: function (response) {
 //                            $("#txtresponse").css('display', 'inline-block'); 
 //                            $("#txtresponse").text(response);
-                           location.reload()
+//                            location.reload()
+                              window.alert(response);
                         }
                     });
                     e.preventDefault();
+                    
                 });
             });
 
@@ -75,7 +89,7 @@ $conn->close();
                         $imageName = $row['image_name'];
                         $imagePath = $row['image_path'];
 
-                        echo '<li id="image_' . $imageId . '" >
+                        echo '<li id="image_' . $imageId . '">
                         <img src="' . $imagePath . '" alt="' . $imageName . '"></li>';
                     }
                 }

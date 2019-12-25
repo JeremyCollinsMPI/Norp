@@ -46,6 +46,7 @@ $conn->close();
 //                            $("#txtresponse").css('display', 'inline-block'); 
 //                            $("#txtresponse").text(response);
                            location.reload()
+                           window.alert(response);
                         }
                     });
                     e.preventDefault();
@@ -70,7 +71,7 @@ $conn->close();
                         $imagePath = $row['image_path'];
 
                         echo '<li id="image_' . $imageId . '" >
-                        <img style="transform:rotate(90deg);" src="' . $imagePath . '" alt="' . $imageName . '"></li>';
+                        <img style="transform:rotate(0deg);" src="' . $imagePath . '" alt="' . $imageName . '"></li>';
                     }
                 }
                 ?>
