@@ -3,7 +3,7 @@ require_once "db.php";
 $curl = curl_init("PYTHON_URL:89/elo?silent=true"); 
 $html = curl_exec($curl);
 curl_close($curl);
-$sql = "SELECT * FROM tbl_images order by elo desc;";
+$sql = "SELECT * FROM tbl_images where elo is not null order by elo desc;";
 $result = $conn->query($sql);
 $conn->close();
 ?>
@@ -81,8 +81,8 @@ $conn->close();
                         $imagePath = $row['image_path'];
                         $elo = intval($row['elo']);
 
-                        echo '<li id="image_' . $imageId . '" >
-                        <img src="' . $imagePath . '" alt="' . $imageName . '">' . 
+                        echo '<li id="image_' . $imageId . '" > <a href="particular_person.php?imageName=' . $imageName . '">
+                        <img src="' . $imagePath . '" alt="' . $imageName . '"> </a>' . 
                         '<elo> ' . $elo . ' </elo> </li>';
          
                     }
