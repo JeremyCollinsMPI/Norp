@@ -1,0 +1,2 @@
+mysql_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql)
+docker run --rm -it -v $PWD/norp/src:/src -e mysql_ip=$mysql_ip jeremycollinsmpi/norp:create-sql python update_sql.py

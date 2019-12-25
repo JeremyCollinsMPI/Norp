@@ -108,12 +108,18 @@ class Elo():
         done = True
     number_of_iterations = 100
     i = Implementation()
-    for j in range(1,201):
-      i.addPlayer(str(j), rating = 1000)
+    mycursor.execute('select id from tbl_images;')
+    number_of_ids = len(list(mycursor))
+    ids = {}
+    for j in range(1, number_of_ids+1):
+      i.addPlayer(str(j), rating = 4000)
+      ids[str(j)] = 'not_done'
     for iteration in range(number_of_iterations):
       all_pairs = random.sample(all_pairs, len(all_pairs))   
       for pair in all_pairs:
         i.recordMatch(str(pair[0]), str(pair[1]), winner=str(pair[0]))
+        ids[str(pair[0])] = 'done'
+        ids[str(pair[1])] = 'done'
     try:
       mycursor.execute('select elo from tbl_images;')
     except:
@@ -121,7 +127,17 @@ class Elo():
     for member in i.getRatingList():
       id = member[0]
       ranking = str(round(member[1], 2))
-      mycursor.execute('update tbl_images set elo=' + ranking + ' where id=' + id + ';')
+      print(id)
+      print(ranking)
+#       mycursor.execute('update tbl_images set elo=' + ranking + ' where id=' + id + ';')
+      if ids[id] == 'done':
+        mycursor.execute('update tbl_images set elo=' + ranking + ' where id=' + id + ';')
+      elif ids[id] == 'not_done':
+        mycursor.execute('update tbl_images set elo = NULL where id=' + id + ';')
+        print('mate')
+      else:
+        print('this should not happen')
+    mycursor.execute('commit;')
     ratings = i.getRatingList()
     if not silent:
       return str(sorted(ratings, key = lambda x:x[1], reverse = True))

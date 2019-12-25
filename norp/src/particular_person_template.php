@@ -1,11 +1,17 @@
 <?php
 require_once "db.php";
-$curl = curl_init("PYTHON_URL:89/random"); 
+$curl = curl_init("PYTHON_URL/random"); 
 $html = curl_exec($curl);
 curl_close($curl);
-$sql = "SELECT * FROM tbl_images where current_sample is not null;";
+$imageName = $_GET["imageName"];
+$imageNameArray = explode('_', $imageName);
+
+$person = join('_', array_slice($imageNameArray, 0, count($imageNameArray)-1));
+$sql = "SELECT * FROM all_images where person='" . $person . "';";
 $result = $conn->query($sql);
 $conn->close();
+
+
 ?>
 <!doctype html>
 <html >
@@ -70,7 +76,7 @@ $conn->close();
                         $imagePath = $row['image_path'];
 
                         echo '<li id="image_' . $imageId . '" >
-                        <img style="transform:rotate(90deg);" src="' . $imagePath . '" alt="' . $imageName . '"></li>';
+                        <img src="' . $imagePath . '" alt="' . $imageName . '"></li>';
                     }
                 }
                 ?>
