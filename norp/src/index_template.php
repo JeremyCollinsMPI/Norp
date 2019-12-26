@@ -46,7 +46,6 @@ $conn->close();
 //                            $("#txtresponse").css('display', 'inline-block'); 
 //                            $("#txtresponse").text(response);
                            location.reload()
-                           window.alert(response);
                         }
                     });
                     e.preventDefault();
