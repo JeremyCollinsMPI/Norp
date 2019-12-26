@@ -104,7 +104,7 @@ $conn->close();
       <h2>              </h2> 
       <p>    g </p>
       <p>Click below to show the sorted images </p> 
-      <button onclick="myFunc()">Click me</button> 
+      <button onclick="myFunc()">Back</button> 
       <!~~script to redirect to another webpage~~>   
       <script> 
          function myFunc() { 

@@ -2,7 +2,6 @@ from selenium import webdriver
 from time import sleep
 import os
 
-
 files_already_done = os.listdir('../all_images/')
 
 embeddings = open('all_embeddings.txt','r').readlines()
